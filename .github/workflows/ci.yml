@@ -55,8 +55,13 @@ jobs:
         id: test-action
         uses: ./
         with:
-          milliseconds: 1000
+          token: ${{ secrets.GITHUB_TOKEN }}
+          id: issue
+          title: Test Action
+          body: This is a test action.
+          assignees: |
+            binkrassdufass
 
       - name: Print Output
         id: output
-        run: echo "${{ steps.test-action.outputs.time }}"
+        run: echo "${{ steps.test-action.outputs.issue }}"
